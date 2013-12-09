@@ -21,9 +21,18 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jboss.quickstarts.jboss-on</groupId>
   <artifactId>rhq-client-ejb</artifactId>
+  <version>3.2.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>JBoss ON Quickstart: Remote Java API example - EJB Client</name>
-  <version>3.2.0-SNAPSHOT</version>
+  
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <distribution>repo</distribution>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+    </license>
+  </licenses>
+  
   <properties>
     <rhq.version>4.9.0</rhq.version>
     <maven.compiler.target>1.6</maven.compiler.target>
@@ -40,6 +49,7 @@
 
     <version.jboss.spec.javaee.6.0>3.0.2.Final-redhat-4</version.jboss.spec.javaee.6.0>
   </properties>
+  
   <dependencyManagement>
     <dependencies>
       <!-- Define the version of JBoss' Java EE 6 APIs we want to use -->
@@ -164,15 +174,8 @@
     </dependency>
   </dependencies>
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <target>1.6</target>
-          <source>1.6</source>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>

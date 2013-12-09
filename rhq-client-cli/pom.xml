@@ -35,9 +35,22 @@
 
   <properties>
     <rhq.version>4.9.0</rhq.version>
+    <version.jboss.bom.eap>1.0.4.Final-redhat-9</version.jboss.bom.eap>
     <maven.compiler.target>1.6</maven.compiler.target>
     <maven.compiler.source>1.6</maven.compiler.source>
   </properties>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.bom</groupId>
+        <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+        <version>${version.jboss.bom.eap}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
 
@@ -53,21 +66,12 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
       <scope>test</scope>
-    </dependency>		
+    </dependency>
   </dependencies>
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <target>1.6</target>
-          <source>1.6</source>
-        </configuration>
-      </plugin>
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -90,7 +94,7 @@
         </configuration>
       </plugin>
 
-    <!--
+      <!--
       In case you need to provide JAR files taken from JBoss ON CLI tool, 
       put them to 'lib' directory and uncomment this plugin
       Requires : maven >= 3.0.3

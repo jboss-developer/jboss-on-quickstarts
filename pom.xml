@@ -32,18 +32,17 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
     </license>
   </licenses>
-
-  <modules>
-    <module>rhq-client-ejb</module>
-    <module>rhq-client-cli</module>
-  </modules>
-
   <properties>
-		<!-- To work with JON 3.1.x use 4.4.0 For JON 3.2.x use 4.9.0 -->
+    <!-- To work with JON 3.1.x use 4.4.0 For JON 3.2.x use 4.9.0 -->
     <rhq.version>4.9.0</rhq.version>
     <!-- maven-compiler-plugin -->
     <maven.compiler.target>1.6</maven.compiler.target>
     <maven.compiler.source>1.6</maven.compiler.source>
   </properties>
+
+  <modules>
+    <module>rhq-client-ejb</module>
+    <module>rhq-client-cli</module>
+  </modules>
 
 </project>
