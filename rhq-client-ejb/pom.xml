@@ -34,7 +34,7 @@
   </licenses>
   
   <properties>
-    <rhq.version>4.9.0</rhq.version>
+    <version.rhq.client>4.9.0</version.rhq.client>
     <maven.compiler.target>1.6</maven.compiler.target>
     <maven.compiler.source>1.6</maven.compiler.source>
     <!-- Explicitly declaring the source encoding eliminates the following 
@@ -48,6 +48,7 @@
     <version.jboss.as>7.2.1.Final-redhat-10</version.jboss.as>
 
     <version.jboss.spec.javaee.6.0>3.0.2.Final-redhat-4</version.jboss.spec.javaee.6.0>
+    <version.exec.plugin>1.2.1</version.exec.plugin>
   </properties>
   
   <dependencyManagement>
@@ -141,7 +142,7 @@
     <dependency>
       <groupId>org.rhq</groupId>
       <artifactId>rhq-enterprise-server</artifactId>
-      <version>${rhq.version}</version>
+      <version>${version.rhq.client}</version>
       <type>ejb</type>
       <exclusions>
         <exclusion>
@@ -157,7 +158,7 @@
     <dependency>
       <groupId>org.rhq</groupId>
       <artifactId>rhq-core-domain</artifactId>
-      <version>${rhq.version}</version>
+      <version>${version.rhq.client}</version>
       <type>ejb</type>
     </dependency>
 
@@ -179,7 +180,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>${version.exec.plugin}</version>
         <configuration>
           <mainClass>org.rhq.remoting.ejbclient.examples.Main</mainClass>
         </configuration>
