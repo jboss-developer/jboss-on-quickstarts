@@ -151,11 +151,8 @@ public class DeployBundle {
                 e.printStackTrace();
             }
             BundleDeploymentCriteria criteria = new BundleDeploymentCriteria();
-            criteria.addFilterBundleId(deployment.getId());
-            PageList<BundleDeployment> found = bundleManager.findBundleDeploymentsByCriteria(client.getSubject(), criteria);
-            if (!found.isEmpty()) {
-                deployment = found.get(0);
-            }
+            criteria.addFilterId(deployment.getId());
+            deployment = bundleManager.findBundleDeploymentsByCriteria(client.getSubject(), criteria).get(0);
         }
         return deployment;
     }
