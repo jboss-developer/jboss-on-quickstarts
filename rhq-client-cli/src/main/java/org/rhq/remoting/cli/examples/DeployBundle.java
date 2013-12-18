@@ -16,13 +16,16 @@
  */
 package org.rhq.remoting.cli.examples;
 
+import org.rhq.core.domain.bundle.Bundle;
 import org.rhq.core.domain.bundle.BundleDeployment;
 import org.rhq.core.domain.bundle.BundleDeploymentStatus;
 import org.rhq.core.domain.bundle.BundleDestination;
 import org.rhq.core.domain.bundle.BundleVersion;
 import org.rhq.core.domain.configuration.Configuration;
+import org.rhq.core.domain.criteria.BundleCriteria;
 import org.rhq.core.domain.criteria.BundleDeploymentCriteria;
 import org.rhq.core.domain.resource.group.ResourceGroup;
+import org.rhq.core.domain.util.PageList;
 import org.rhq.enterprise.clientapi.RemoteClient;
 import org.rhq.enterprise.server.bundle.BundleManagerRemote;
 
@@ -80,6 +83,22 @@ public class DeployBundle {
         BundleDeployment deployment = bundleManager.createBundleDeployment(client.getSubject(), version.getId(), destination.getId(), "", config);
         deployment = bundleManager.scheduleBundleDeployment(client.getSubject(), deployment.getId(), false);
         return waitForBundleDeployment(deployment);
+    }
+    /**
+     * removes bundle from server (if found)
+     * @param name name of bundle
+     */
+    public void removeBundle(String name) {
+        BundleCriteria criteria = new BundleCriteria();
+        criteria.addFilterName(name);
+        PageList<Bundle> bundles = bundleManager.findBundlesByCriteria(client.getSubject(), criteria);
+        if (!bundles.isEmpty()) {
+            try {
+                bundleManager.deleteBundle(client.getSubject(),bundles.get(0).getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

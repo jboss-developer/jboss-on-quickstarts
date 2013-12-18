@@ -41,17 +41,22 @@ public class DeployBundleTest {
     public void initClient() {
         client = TestUtil.createClient();
         new ResourceDiscovery(this.client).importAllResources();
+        // delete our resource group for sure
+        new ResourceGroups(client).deleteGroup("bundletest-group");
+        // make sure there's no bundle from previous run
+        // the name "test-bundle" is taken from src/main/resources/bundle.zip!deploy.xml
+        new DeployBundle(client).removeBundle("test-bundle");
     }
 
     @After
     public void logoutClient() {
+        // cleanup deployed bundle
+        new DeployBundle(client).removeBundle("test-bundle");
         client.logout();
     }
 
     @Test
     public void deployBundle() throws Exception {
-        // delete our resource group for sure
-        new ResourceGroups(client).deleteGroup("bundletest-group");
         // we'll use Linux resourceType .. so all linux platforms
         Resource[] resources = new ResourceDiscovery(client).findResources("Linux");
         Assert.assertTrue(resources.length > 0);
