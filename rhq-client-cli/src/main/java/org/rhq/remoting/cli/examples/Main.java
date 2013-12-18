@@ -47,7 +47,6 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-
         String host = System.getProperty("rhq.server.host");
         if (host == null) {
             host = "localhost";
@@ -188,8 +187,11 @@ public class Main {
         log.info(separator);
 
         log.info("Bundle deployment:");
-        log.info("Create a resource group 'bundle-test' containing our Linux platform");
+        log.info("Remove resource group 'bundle-test' and bundle in case it already exists");
+        // 'test-bundle' name is taken from src/main/resrouces/bundle.zip!deploy.xml
+        new DeployBundle(client).removeBundle("test-bundle");
         new ResourceGroups(client).deleteGroup("bundle-test");
+        log.info("Create a resource group 'bundle-test' containing our Linux platform");
         ResourceGroup bundleTarget = new ResourceGroups(client).createGroup("bundle-test", new Resource[]{platform}, false);
         log.info("Deploy a sample bundle to 'bundle-test' group");
         BundleDeployment deployment = new DeployBundle(client).deployBundle(
