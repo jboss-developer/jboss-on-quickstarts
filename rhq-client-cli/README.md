@@ -35,9 +35,7 @@ All you need to build this project is Java 6.0 (Java SDK 1.6) or later, Maven 3.
 Configure Maven
 ---------------
 
-If you have not yet done so, you must [Configure Maven](https://github.com/jboss-developer/jboss-eap-quickstarts#configure-maven) 
-before testing the quickstarts.
-
+If you have not yet done so, you must [Configure Maven](../README.md#configure-maven) before testing the quickstarts.
 
 Start the JBoss ON Server
 -------------------------
@@ -55,7 +53,7 @@ Build and run the Quickstart
 -------------------------
 
 _NOTE: The following build command assumes you have configured your Maven user settings. If you have not, you must include Maven 
-setting arguments on the command line. See [Configure Maven](https://github.com/jboss-developer/jboss-eap-quickstarts#configure-maven) for complete instructions and additional options._
+setting arguments on the command line. See [Configure Maven](../README.md#configure-maven) for complete instructions and additional options._
 
 _NOTE: **rhq.server.host** system property is optional, if you don't supply it, `localhost` is used instead._
 
@@ -65,16 +63,16 @@ _NOTE: **rhq.server.host** system property is optional, if you don't supply it, 
 
         mvn clean install -DskipTests
 
-4. Type this command to run quickstart        
+4. Type this command to run quickstart:
         
         mvn exec:java -Drhq.server.host=<your JON server host> 
 
 _NOTE: You may encounter ERROR messages about server and client version incompatibility being printed in console output. To 
 workaround it, create **lib** folder in the root of directory of this quickstart, download CLI from your JON Server, unzip it and copy all .jar files from **lib** directory to your new *lib* directory. Then edit pom.xml in the root directory of this quickstart, comment out **remote-client-deps** dependency and uncomment **addjars-maven-plugin**._
 
-Run tests
+Run the tests
 ---------------------
 
-Running tests runs almost the same things as if you run the quickstart
+These tests automate many of the tasks performed when your run the quickstart manually. 
 
         mvn test -Drhq.server.host=<your JON server host>

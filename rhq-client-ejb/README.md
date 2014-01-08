@@ -27,8 +27,7 @@ You may need to setup EJB authentication if you run this quickstart on remote JO
 Configure Maven
 ---------------
 
-If you have not yet done so, you must [Configure Maven](https://github.com/jboss-developer/jboss-eap-quickstarts#configure-maven) 
-before testing the quickstarts.
+If you have not yet done so, you must [Configure Maven](../README.md#configure-maven) before testing the quickstarts.
 
 
 Start the JBoss ON Server
@@ -43,11 +42,11 @@ You can skip this step in case you already have JBoss ON instance running on
         For Windows: RHQ_HOME\bin\rhqctl.bat start --server
 
 
-Build and the Quickstart
+Build and Run the Quickstart
 -------------------------
 
 _NOTE: The following build command assumes you have configured your Maven user settings. If you have not, you must include Maven 
-setting arguments on the command line. See [Configure Maven](https://github.com/jboss-developer/jboss-eap-quickstarts#configure-maven) for complete instructions and additional options._
+setting arguments on the command line. See [Configure Maven](../README.md#configure-maven) for complete instructions and additional options._
 
 _NOTE: **rhq.server.host** system property is optional, if you don't supply it `localhost` is used instead._
 
@@ -57,13 +56,14 @@ _NOTE: **rhq.server.host** system property is optional, if you don't supply it `
 
         mvn clean install -DskipTests
 
-4. Type this command to run quickstart        
+4. Type this command to run quickstart:
         
         mvn exec:java -Drhq.server.host=<your JON server host> 
 
-Run tests
+Run the tests
 ---------------------
 
-Running tests runs almost the same things as if you run the quickstart
+These tests automate many of the tasks performed when your run the quickstart manually. 
 
         mvn test -Drhq.server.host=<your JON server host>
+
