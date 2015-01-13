@@ -1,4 +1,4 @@
-rhq-client-ejb: Remote JAVA API example - EJB Client
+Remote JAVA API example - EJB Client
 ======================================================
 Author: Libor Zoubek  
 Level: Beginner  

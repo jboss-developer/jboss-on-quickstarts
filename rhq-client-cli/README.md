@@ -1,4 +1,4 @@
-rhq-client-cli: Remote JAVA API example - CLI Client
+Remote JAVA API example - CLI Client
 ======================================================
 Author: Libor Zoubek  
 Level: Intermediate  
